@@ -1,4 +1,6 @@
 <resources>
+    <!-- Do NOT delete...  S H E R L E Y......-->
+    <string name="app_name">Number Game</string>
 
     <!-- Numbers -->
     <string name="zero">0</string>
@@ -11,7 +13,4 @@
     <string name="seven">7</string>
     <string name="eight">8</string>
     <string name="nine">9</string>
-
-    <!-- Placeholder -->
-    <string name="blank"></string>
 </resources>

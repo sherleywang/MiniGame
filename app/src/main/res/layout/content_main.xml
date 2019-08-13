@@ -9,53 +9,73 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:id="@+id/digit3"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/blank"
-        app:layout_constraintEnd_toStartOf="@+id/digit1000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number_guide" />
-
-    <TextView
-        android:id="@+id/digit2"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
-        android:text="@string/blank"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="82dp" />
-
-    <TextView
-        android:id="@+id/digit"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
-        android:text="@string/blank"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="82dp" />
-
-    <TextView
         android:id="@+id/number_guide"
-        android:layout_width="380dp"
-        android:layout_height="35dp"
-        android:text="asdfkjadsfk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="number_guide"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/digit1000"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
-        android:text="@string/blank"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="82dp" />
+        android:id="@+id/digit_field_one"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/digit_field_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number_input" />
+
+    <TextView
+        android:id="@+id/digit_field_two"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/digit_field_three"
+        app:layout_constraintStart_toEndOf="@+id/digit_field_one"
+        app:layout_constraintTop_toBottomOf="@+id/number_input" />
+
+    <TextView
+        android:id="@+id/digit_field_three"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/digit_field_four"
+        app:layout_constraintStart_toEndOf="@+id/digit_field_two"
+        app:layout_constraintTop_toBottomOf="@+id/number_input" />
+
+    <TextView
+        android:id="@+id/digit_field_four"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/digit_field_three"
+        app:layout_constraintTop_toBottomOf="@+id/number_input" />
+
+    <EditText
+        android:id="@+id/number_input"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/digit_field_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number_guide" />
 
 </android.support.constraint.ConstraintLayout>
