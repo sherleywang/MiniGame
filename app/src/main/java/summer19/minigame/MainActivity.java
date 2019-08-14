@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     TextView digitTwo;
     TextView digitThree;
     TextView digitFour;
+
+    Button enterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,17 @@ public class MainActivity extends AppCompatActivity {
         digitTwo = findViewById(R.id.digit_field_two);
         digitThree = findViewById(R.id.digit_field_three);
         digitFour = findViewById(R.id.digit_field_four);
+
+        enterButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                runFunction();
+            }
+        });
+    }
+
+    private void runFunction() {
 
     }
 
