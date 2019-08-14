@@ -3,6 +3,7 @@ package summer19.minigame;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -59,9 +60,18 @@ public class MainActivity extends AppCompatActivity {
             int win = numGame.checkWin();
 
             if (win == 0) {
-                // todo Switch to WIN screen
-                setGuideText("YUU WEEEEEN", Color.GREEN);
-                numGame = new NumberGame();
+                setGuideText("", Color.BLACK);
+
+                setContentView(R.layout.activity_win_screen);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        numGame = new NumberGame();
+                        setContentView(R.layout.activity_main);
+                    }
+                }, 3000);
                 return;
             } else if (win == 1) {
                 setGuideText("TUUU LOOOOOO", Color.BLUE);

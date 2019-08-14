@@ -8,12 +8,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="216dp"
-        android:layout_height="259dp"
-        android:text="YOU WIN"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="236dp"
+        android:text="@string/win_text"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="100sp"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="236dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
