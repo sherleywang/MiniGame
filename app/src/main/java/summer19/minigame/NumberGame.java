@@ -1,11 +1,10 @@
 package summer19.minigame;
 
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.Random;
 
-public class NumberGame extends AppCompatActivity {
+public class NumberGame {
 
     // instance variables
     private int secret;
