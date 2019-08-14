@@ -19,13 +19,11 @@ public class NumberGame extends AppCompatActivity {
         display = new boolean[4];
     }
 
-    public void round() {
-        TextView input = findViewById(R.id.number_input);
-        guess = Integer.parseInt(input.getText().toString());
-        verifyGuess();
+    public void getGuess(TextView tv) {
+        guess = Integer.valueOf(tv.getText().toString());
     }
 
-    private void verifyGuess() {
+    public void verifyGuess() {
         String secretString = "" + secret;
         String guessString = "" + guess;
         for (int i = 0; i < 4; i++) {
@@ -33,12 +31,14 @@ public class NumberGame extends AppCompatActivity {
         }
     }
 
-    public boolean checkWin() {
-        for (boolean bool : display) {
-            if (!bool)
-                return false;
-        }
-        return true;
+    // return 0 for correct, 1 for too low, 2 for too high
+    public int checkWin() {
+        if (guess == secret)
+            return 0;
+        else if (guess < secret)
+            return 1;
+        else
+            return 2;
     }
 
     public boolean[] getDisplay() {
