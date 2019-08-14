@@ -19,11 +19,15 @@ public class NumberGame {
     }
 
     public boolean getGuess(TextView tv) {
-        guess = Integer.valueOf(tv.getText().toString());
-        if (guess < 999)
-            return false;
-        else
-            return true;
+        if (tv.getText().toString().length() > 0) {
+            guess = Integer.valueOf(tv.getText().toString());
+            return guess > 999;
+        }
+        return false;
+    }
+
+    public String getGuessStr() {
+        return "" + guess;
     }
 
     public void verifyGuess() {

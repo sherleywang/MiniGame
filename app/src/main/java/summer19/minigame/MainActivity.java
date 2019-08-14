@@ -1,6 +1,7 @@
 package summer19.minigame;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,19 +11,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText numberInput;
 
-    TextView digitOne;
-    TextView digitTwo;
-    TextView digitThree;
-    TextView digitFour;
     TextView numberGuide;
+
+    TextView[] tvArray = new TextView[4];
 
     Button enterButton;
 
-    NumberGame numGame;
+    NumberGame numGame = new NumberGame();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
         numberInput = findViewById(R.id.number_input);
 
-        digitOne = findViewById(R.id.digit_field_one);
-        digitTwo = findViewById(R.id.digit_field_two);
-        digitThree = findViewById(R.id.digit_field_three);
-        digitFour = findViewById(R.id.digit_field_four);
+        tvArray[0] = findViewById(R.id.digit_field_one);
+        tvArray[1] = findViewById(R.id.digit_field_two);
+        tvArray[2] = findViewById(R.id.digit_field_three);
+        tvArray[3] = findViewById(R.id.digit_field_four);
+
+        enterButton = findViewById(R.id.button_enter);
 
         numberGuide = findViewById(R.id.number_guide);
 
@@ -51,12 +54,43 @@ public class MainActivity extends AppCompatActivity {
 
     private void commenceGame() {
         if (!numGame.getGuess(numberInput)) {
-            numberGuide.setText("Please enter a four digit number!");
-            numberGuide.setTextColor(Color.RED);
+            setGuideText("Please enter a four digit number!", Color.RED);
         } else {
             int win = numGame.checkWin();
+
+            if (win == 0) {
+                // todo Switch to WIN screen
+                setGuideText("YUU WEEEEEN", Color.GREEN);
+                return;
+            } else if (win == 1) {
+                setGuideText("TUUU LOOOOOO", Color.BLUE);
+            } else {
+                setGuideText("TUUUUU HI", Color.RED);
+            }
+
             numGame.verifyGuess();
+            setDisplayNumbers();
         }
+    }
+
+    private void setDisplayNumbers() {
+        boolean[] display = numGame.getDisplay();
+        for (int i = 0; i < display.length; i++) {
+            String digit = "" + numGame.getGuessStr().charAt(i);
+            int color;
+
+            tvArray[i].setText(digit);
+
+            color = display[i] ? Color.GREEN : Color.RED;
+
+            tvArray[i].setBackgroundColor(color);
+            tvArray[i].setBackgroundTintMode(PorterDuff.Mode.OVERLAY);
+        }
+    }
+
+    private void setGuideText(String message, int color) {
+        numberGuide.setText(message);
+        numberGuide.setTextColor(color);
     }
 
     @Override
