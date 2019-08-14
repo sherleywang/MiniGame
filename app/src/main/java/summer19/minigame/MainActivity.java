@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText numberInput;
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button enterButton;
 
-    NumberGame numGame = new NumberGame();
+    NumberGame numGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        numGame = new NumberGame();
 
         numberInput = findViewById(R.id.number_input);
 
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             if (win == 0) {
                 // todo Switch to WIN screen
                 setGuideText("YUU WEEEEEN", Color.GREEN);
+                numGame = new NumberGame();
                 return;
             } else if (win == 1) {
                 setGuideText("TUUU LOOOOOO", Color.BLUE);
