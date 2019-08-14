@@ -18,8 +18,12 @@ public class NumberGame {
         display = new boolean[4];
     }
 
-    public void getGuess(TextView tv) {
+    public boolean getGuess(TextView tv) {
         guess = Integer.valueOf(tv.getText().toString());
+        if (guess < 999)
+            return false;
+        else
+            return true;
     }
 
     public void verifyGuess() {
