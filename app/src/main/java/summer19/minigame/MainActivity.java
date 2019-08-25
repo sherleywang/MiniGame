@@ -1,9 +1,9 @@
 package summer19.minigame;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,26 +64,17 @@ public class MainActivity extends AppCompatActivity {
 
             if (win == 0) {
                 clearGame();
-
-                // setContentView(R.layout.activity_win_screen);
-
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        numGame = new NumberGame();
-                        // setContentView(R.layout.activity_main);
-                    }
-                }, 3000);
-                return;
-            } else if (win == 1) {
-                setGuideText("TUUU LOOOOOO", Color.BLUE);
+                Intent i = new Intent(this, WinScreen.class);
+                startActivity(i);
+                numGame = new NumberGame();
             } else {
-                setGuideText("TUUUUU HI", Color.RED);
+                if (win == 1)
+                    setGuideText("Too low :((((((", Color.BLUE);
+                else
+                    setGuideText("Too high :((((((", Color.RED);
+                numGame.verifyGuess();
+                setDisplayNumbers();
             }
-
-            numGame.verifyGuess();
-            setDisplayNumbers();
         }
     }
 
@@ -100,11 +90,10 @@ public class MainActivity extends AppCompatActivity {
         boolean[] display = numGame.getDisplay();
         for (int i = 0; i < display.length; i++) {
             String digit = "" + numGame.getGuessStr().charAt(i);
-            int color;
 
             tvArray[i].setText(digit);
 
-            color = display[i] ? Color.GREEN : Color.RED;
+            int color = display[i] ? Color.GREEN : Color.RED;
 
             tvArray[i].setBackgroundColor(color);
             tvArray[i].setBackgroundTintMode(PorterDuff.Mode.OVERLAY);
@@ -121,16 +110,6 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        if (true) { // if is on win screen
-
-        } else {
-            super.onBackPressed();
-        }
     }
 
 }
