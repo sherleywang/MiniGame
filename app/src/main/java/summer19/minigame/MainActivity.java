@@ -60,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
             int win = numGame.checkWin();
 
             if (win == 0) {
-                setGuideText("", Color.BLACK);
+                clearGame();
 
-                setContentView(R.layout.activity_win_screen);
+                // setContentView(R.layout.activity_win_screen);
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         numGame = new NumberGame();
-                        setContentView(R.layout.activity_main);
+                        // setContentView(R.layout.activity_main);
                     }
                 }, 3000);
                 return;
@@ -81,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
             numGame.verifyGuess();
             setDisplayNumbers();
+        }
+    }
+
+    private void clearGame() {
+        setGuideText("", Color.BLACK);
+        for (TextView tv : tvArray) {
+            tv.setText("");
+            tv.setBackgroundColor(Color.WHITE);
         }
     }
 
