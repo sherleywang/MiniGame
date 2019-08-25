@@ -3,4 +3,7 @@
 
     <string name="win_text">YOU WIN</string>
     <string name="back_mes">Press back to start a new game</string>
+
+    <string name="num_field_hint">Enter any 4 digit number</string>
+    <string name="enter_button_text">Enter</string>
 </resources>
