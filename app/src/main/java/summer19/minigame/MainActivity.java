@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 commenceGame();
             }
         });
+
+
     }
 
     private void commenceGame() {
@@ -117,6 +121,16 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (true) { // if is on win screen
+
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }
